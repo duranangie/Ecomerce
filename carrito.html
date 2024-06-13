@@ -13,13 +13,13 @@
 
             <header>
                 <h1 class="logo">TiendaShop</h1>
-
+            </header>
                 <nav>
                     <ul>
-                        <li><a class="boton-menu boton-volver active" href="./index.html"><i class="bi bi-arrow-90deg-left"></i>
+                        <li><a class="boton-menu boton-volver" href="./index.html"><i class="bi bi-arrow-90deg-left"></i>
                             Seguir comprando</a>
                         </li>
-                        <li><a class="boton-menu" href="./carrito.html"><i class="bi bi-cart-fill"></i>Carrito</a>
+                        <li><a class="boton-menu boton-carrito" href="./carrito.html"><i class="bi bi-cart-fill"></i>Carrito</a>
                         </li>
 
                     </ul>
@@ -29,7 +29,7 @@
                     <p class="texto-footer">© 2024 TiendaShop</p>
                 </footer>
 
-            </header>
+        
 
 
 
@@ -40,9 +40,9 @@
             <div class="contenedor-carrito">
                 <p class="carrito-vacio"><i class="bi bi-emoji-frown"></i>
                     Tu carrito esta vacio</p>
-                    <div class="carrito-productos">
+                    <div class="carrito-productos disable">
                         <div class="carrito-producto">
-                            <img src="./img/abrigos/01.jpg" alt="">
+                            <img class="carrito-producto-imagen" src="./img/abrigos/01.jpg" alt="">
                             <div class="carrito-producto-titulo">
                                 <small>titulo</small>
                                     <h3>Abrigo 01</h3>
@@ -60,12 +60,13 @@
                                 <p>$1000</p>
                             </div>
                             <div>
-                                <button class="carrito-producto-eliminar"><i class="bi bi-trash"></i>
-                                    eliminar</button>
+                                <button class="carrito-producto-eliminar"><i class="bi bi-trash-fill"></i>
+                                    </button>
                             
                             </div>
+                        </div>
                             <div class="carrito-producto">
-                                <img src="./img/abrigos/01.jpg" alt="">
+                                <img class="carrito-producto-imagen" src="./img/abrigos/01.jpg" alt="">
                                 <div class="carrito-producto-titulo">
                                     <small>titulo</small>
                                         <h3>Abrigo 02</h3>
@@ -83,14 +84,14 @@
                                     <p>$2000</p>
                                 </div>
                                 <div>
-                                    <button class="carrito-producto-eliminar"><i class="bi bi-trash"></i>
-                                        eliminar</button>
+                                    <button class="carrito-producto-eliminar"><i class="bi bi-trash-fill"></i>
+                                        </button>
                                 
                                 </div>
                         </div>
                   
 
-                    <div class="carrito-acciones">
+                    <div class="carrito-acciones disable">
                         <div class="carrito-acciones-izquierda">
                             <button class="carrito-acciones-vaciar">Vaciar carrito</button>
                         </div>
@@ -106,6 +107,8 @@
                         </div>
 
                     </div>
+
+                    <div class="carrito-comprado disable"><i class="bi bi-emoji-laughing"></i> Gracias por tu compra</div>
               
             </div>
 
