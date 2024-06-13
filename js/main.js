@@ -188,12 +188,14 @@ const productos = [
 
 const contenedorProducto = document.querySelector("#contenedor-productos")
 const botonesCategorias = document.querySelectorAll(".boton-categoria")
+const tituloPrincipal = document.querySelector("#titulo-principal")
+let botonesAgregar = document.querySelectorAll(".producto-agregar")
+const numerito = document.querySelector("#numerito")
+function cargarProductos(productosElegidos){
 
+    contenedorProducto.innerHTML = "";
 
-
-function cargarProductos(){
-
-    productos.forEach(producto =>{
+    productosElegidos.forEach(producto =>{
 
         const div= document.createElement("div")
         div.classList.add("producto");
@@ -202,28 +204,85 @@ function cargarProductos(){
         <div class="producto-detalles">
             <h3 class="producto-titulo">${producto.titulo}</h3>
             <p class="producto-precio">$${producto.precio}</p>
-            <button class="producto-agregar"id="${producto.id}">agregar</button>
+            <button class="producto-agregar" id="${producto.id}">agregar</button>
         </div>
         
         
         `;
-
-
-
         contenedorProducto.append(div);
+
+        
     })
 
+    actualizarBoton();
+  
+
+  
 }
 
 
-cargarProductos();
+cargarProductos(productos);
 
 
 botonesCategorias.forEach(boton => {
     boton.addEventListener("click",(event)=>{
 
+        botonesCategorias.forEach(boton => boton.classList.remove("active"))
+
         event.currentTarget.classList.add("active")
 
 
+        if(event.currentTarget.id != "todos"){
+        const productoCategoria = productos.find(producto => producto.categoria.id === event.currentTarget.id)
+       
+        tituloPrincipal.innerHTML= productoCategoria.categoria.nombre
+        
+        const productosBoton = productos.filter(producto => producto.categoria.id === event.currentTarget.id);
+        cargarProductos(productosBoton);
+        }else {
+            tituloPrincipal.innerHTML="todos los productos";
+            cargarProductos(productos)
+        }
     })
-})
+
+    
+});
+
+
+function actualizarBoton(){
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+    
+    botonesAgregar.forEach(boton =>{
+        boton.addEventListener('click', agregarAlCarrito);
+    });
+
+
+    
+}
+
+
+const productoEnCarrito = [];
+
+function agregarAlCarrito(event){
+
+    const idBoton = event.currentTarget.id;
+    const productoAgregado = productos.find(producto => producto.id === idBoton);
+
+    if(productoEnCarrito.some(producto => producto.id===idBoton)){
+
+        const index = productoEnCarrito.findIndex(producto => producto.id === idBoton);
+        productoEnCarrito[index].cantidad++;
+    }else{
+    productoAgregado.cantidad = 1;
+    productoEnCarrito.push(productoAgregado);
+
+    }
+    actualizarNumerito();
+    console.log(productoAgregado)
+//1:42:30 
+}
+
+function actualizarNumerito(){
+    let nuevoNumerito = productoEnCarrito.reduce((acc, producto)=> acc + producto.cantidad, 0)
+    numerito.innerText = nuevoNumerito;
+}
