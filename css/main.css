@@ -2,8 +2,8 @@
 
 
 :root {
-    --clr-main: #4b33a8;
-    --clr-main-light: #7353f3;
+    --clr-main: #121f44;
+    --clr-main-light: #8f8d96;
     --clr-white: #ececec;
     --clr-gray: #e2e2e2;
     --clr-red: #961818;
@@ -51,8 +51,9 @@ aside{
 }
 
 .logo{
-    font-weight: 400;
-    font-size: 1.3rem;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--clr-white);
 }
 
 .menu{
