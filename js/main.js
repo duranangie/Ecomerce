@@ -260,8 +260,17 @@ function actualizarBoton(){
     
 }
 
+let productoEnCarritoLS = localStorage.getItem("productos-en-carrito")
 
-const productoEnCarrito = [];
+
+
+if(productoEnCarritoLS){
+     productoEnCarrito = JSON.parse(productoEnCarritoLS);
+     actualizarNumerito();
+}else{
+    productoEnCarrito = [];
+}
+
 
 function agregarAlCarrito(event){
 
@@ -278,8 +287,7 @@ function agregarAlCarrito(event){
 
     }
     actualizarNumerito();
-    console.log(productoAgregado)
-//1:42:30 
+    localStorage.setItem("productos-en-carrito",JSON.stringify(productoEnCarrito))
 }
 
 function actualizarNumerito(){
